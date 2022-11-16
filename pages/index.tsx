@@ -1,16 +1,19 @@
+import { PrintTailwindConfig } from '@components/internal/PrintTailwindConfig'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import TokenTest from '../components/TokenTest'
+import Image from 'next/image'
 
 const Home: NextPage = () => {
   return (
-    <div>
+    <div className={`flex flex-col items-center justify-center min-h-screen py-2 prose bg-beige`}>
       <Head>
-        <title>Style Token Tailwind Example</title>
-        <meta name="description" content="A style token implementation for Next.js and Tailwind CSS" />
+        <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-    <TokenTest />
+
+      <h1>Storybook Library</h1>
+      <p>Run <em>yarn storybook</em> to see components</p>
+      <PrintTailwindConfig />
     </div>
   )
 }

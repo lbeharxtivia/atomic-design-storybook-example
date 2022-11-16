@@ -1,7 +1,9 @@
 /** @type {import('tailwindcss').Config} */
+const { fontFamily } = require('tailwindcss/defaultTheme')
+
 const {
   colors,
-  fontFamily,
+  customFontFamily,
   typography,
 } = require("./lib/design-tokens/parsed-tokens");
 
@@ -12,15 +14,20 @@ module.exports = {
       "./pages/**/*.{js,ts,jsx,tsx}",
       "./components/**/*.{js,ts,jsx,tsx}",
       "./lib/**/*.{js,ts,jsx,tsx}",
+      'node_modules/flowbite/**/*.{js,jsx,ts,tsx}',
   ],
   theme: {
-      fontFamily,
       extend: {
           colors: {
               ...colors,
+
           },
           fontSize: {
               "size-inherit": "inherit",
+          },
+          screens: {
+              smMax: { max: "640px" },
+              mdMax: { max: "768px" },
           },
           transitionProperty: {
               height: "height",
@@ -43,14 +50,8 @@ module.exports = {
           },
       }),
   },
-  daisyui: {
-      themes: [
-          {
-              myCitcTheme: {
-                  ...colors,
-              },
-          },
-      ],
-  },
-  plugins: [require("@tailwindcss/typography"), require("daisyui")],
+  plugins: [
+    require("@tailwindcss/typography"), 
+    require('flowbite/plugin'),
+  ],
 };
